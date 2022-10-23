@@ -1,7 +1,7 @@
 {
-  "nGen": 1000,
+  "nGen": 5,
   "popsize": 100,
-  "zdt_number": 1,
+  "zdt_number": 3,
   "n_z": 10,
   "n_x_vec": [5, 5, 5],
   "n_y_vec": [5, 5, 5],
