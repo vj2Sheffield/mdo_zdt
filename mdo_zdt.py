@@ -63,7 +63,7 @@ class MDO_ZDT:
         for key, value in variables.items():
             setattr(self, key, value)
 
-    def run(self):
+    def run(self, _seed):
         n_disciplines = self.number_disciplines
 
         # ZDT problem parameters
@@ -110,7 +110,7 @@ class MDO_ZDT:
         prob.driver = mdo.om.pyOptSparseDriver(optimizer='NSGA2')
         prob.driver.opt_settings["maxGen"] = self.nGen
         prob.driver.opt_settings["PopSize"] = self.popsize
-        prob.driver.opt_settings["seed"] = float(seed / 10.0)
+        prob.driver.opt_settings["seed"] = float(_seed / 10.0)
         prob.driver.opt_settings["pCross_real"] = 0.9
         prob.driver.opt_settings["pMut_real"] = 1 / (self.n_z + sum(self.n_x_vec))
         prob.driver.opt_settings["eta_c"] = 20.0
@@ -208,7 +208,7 @@ if __name__ == '__main__':
     n_d = mdo_obj.number_disciplines
 
     np.random.seed(seed)
-    results_df = mdo_obj.run()
+    results_df = mdo_obj.run(seed)
     last_pop_df = results_df.iloc[-popsize:]
 
     last_pop_df.to_csv('last_pop_zdt' + str(zdt_n) + '_nsub_' + str(n_d) + '_seed_' + str(seed) + '.csv', index=False)
