@@ -58,5 +58,5 @@ if __name__ == '__main__':
     df = read_value(zdt_n, n_d, n_y_vec, n_x_vec, structure)
 
     filename_save = 'results/ZDT' + str(zdt_n) + '/' + str(structure) + '/D' + str(n_d) + \
-                    ' /all_pop_y_xhat_zdt' + str(zdt_n) + '_nsub_' + str(n_d) + '_seed_' + str(seed) + '.csv'
+                    '/all_pop_y_xhat_zdt' + str(zdt_n) + '_nsub_' + str(n_d) + '_seed_' + str(seed) + '.csv'
     df.to_csv(filename_save, index=False)
