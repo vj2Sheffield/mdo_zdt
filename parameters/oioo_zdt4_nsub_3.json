@@ -1,5 +1,5 @@
 {
-  "nGen": 5,
+  "nGen": 1000,
   "popsize": 100,
   "zdt_number": 4,
   "n_z": 10,
