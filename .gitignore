@@ -5,5 +5,7 @@ __pycache__/*
 
 __pycache__/*
 reports/*
+results/*
 .idea/*
 
+EMO_results.tar.bz2
