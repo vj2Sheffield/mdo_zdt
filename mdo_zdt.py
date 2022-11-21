@@ -127,11 +127,13 @@ class MDO_ZDT:
 
         recorder = mdo.om.SqliteRecorder('cases_var_params.sql')
         prob.add_recorder(recorder)  # Attach recorder to the problem
+
+        prob.driver.recording_options['includes'] = ['*']
         prob.driver.add_recorder(recorder)  # Attach recorder to the driver
         prob.setup()
 
         model.obj2.add_recorder(recorder)  # Attach recorder to a subsystem
-        model.cycle.nonlinear_solver.add_recorder(recorder)
+        # model.cycle.nonlinear_solver.add_recorder(recorder)
 
         prob.set_solver_print(level=0)
         prob.run_driver()
@@ -142,12 +144,13 @@ class MDO_ZDT:
         # Instantiate your CaseReader
         cr = mdo.om.CaseReader("cases_var_params.sql")
         driver_cases = cr.get_cases('driver', recurse=False)  # List driver cases (do not recurse to system/solver cases)
-        solver_cases = cr.list_cases('root.cycle.nonlinear_solver', out_stream=None)
 
         f1v = []
         f2v = []
         z_data = []
         x_data = []
+        y_data = []
+        xhat_data = []
 
         for case in driver_cases:
             f1v.append(case['obj1.f1'][0])
@@ -163,15 +166,6 @@ class MDO_ZDT:
                     xxdv['x' + str(i) + str(j + 1)] = xvector[j]
             x_data.append(xxdv)
 
-        obj_data = {'f1': f1v, 'f2': f2v}
-        obj_df = pd.DataFrame(data=obj_data)
-        z_df = pd.DataFrame(data=z_data)
-        x_df = pd.DataFrame(data=x_data)
-
-        y_data = []
-        xhat_data = []
-        for case_id in solver_cases:
-            case = cr.get_case(case_id)
             yvd = {}
             for i in range(1, n_disciplines + 1):
                 yvector = case['y' + str(i)]
@@ -186,6 +180,10 @@ class MDO_ZDT:
                     xhatvd['xhat_' + str(i) + str(j + 1)] = xhatvector[j][0]
             xhat_data.append(xhatvd)
 
+        obj_data = {'f1': f1v, 'f2': f2v}
+        obj_df = pd.DataFrame(data=obj_data)
+        z_df = pd.DataFrame(data=z_data)
+        x_df = pd.DataFrame(data=x_data)
         y_df = pd.DataFrame(data=y_data)
         xhat_df = pd.DataFrame(data=xhat_data)
 
