@@ -21,7 +21,7 @@ The repository must be cloned from github and used locally.
 
 To run the generator, use the following code:
 
-`python mdo-zdt.py SEED FILENAME'
+`python mdo-zdt.py SEED FILENAME`
 
 where SEED is the seed for the random number generator and must be an integer greater than 0 and less than 100, and FILENAME is the name of the .json file that contains the parameters defining the structure of the MDO system. These files include:
 
