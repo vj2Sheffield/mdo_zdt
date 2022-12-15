@@ -19,7 +19,7 @@ The repository must be cloned from github and used locally.
 
 # Quickstart #
 
-To run the generator, use the following code:
+To run the generator, use the following command:
 
 `python mdo-zdt.py SEED FILENAME`
 
