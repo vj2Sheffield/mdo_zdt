@@ -36,6 +36,8 @@ where SEED is the seed for the random number generator and must be an integer gr
 
 A number of pre-set parameter files can be found in the /parameters folder, but you can also create new ones as needed. The corresponding linking and local vectors must be the same for proper operation - for example, n_x_vec[i] = n_y_vec[i].
 
+# References #
 
 [1] J. S. Gray, J. T. Hwang, J. R. R. A. Martins, K. T. Moore, and B. A. Naylor, “OpenMDAO: An Open-Source Framework for Multidisciplinary Design, Analysis, and Optimization,” Structural and Multidisciplinary Optimization, vol. 59, no. 4, pp. 1075–1104, 2019, doi: 10.1007/s00158-019-02211-z.
+
 [2] N. Wu, G. Kenway, C. A. Mader, J. Jasa, and J. R. R. A. Martins. pyOptSparse: A Python framework for large-scale constrained nonlinear optimization of sparse systems. Journal of Open Source Software, 5(54), 2564, October 2020. https://doi.org/10.21105/joss.02564.
